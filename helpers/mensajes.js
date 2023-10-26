@@ -1,0 +1,6 @@
+require('colors')
+
+
+const mostrarMenu = () =>{
+    
+}
