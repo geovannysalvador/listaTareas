@@ -55,8 +55,33 @@ class Tareas {
         })
     }
 
-    cambiarEstadoComplePend( completadas = true){
+    mostrarEstadoComplePend( completadas = true){
         
+        console.log();
+        // i es el undice
+        let contador = 0;
+        this.listadoArr.forEach( (tarea) =>{
+
+            const {desc, completadoEn } = tarea;
+
+            const estadoActual = (completadoEn) ? 'Completado'.green : 'Pendiente'.red;
+
+            if (completadas) {
+                // Si existe mostrar completadas
+                if(completadoEn){
+                    contador +=1;
+                    console.log(`${ (contador + '.').green }  ${desc} => ${estadoActual}`);
+                }
+                
+            } else {
+                // Si no existe mostrar pendientes
+                if(!completadoEn){
+                    contador +=1;
+                    console.log(`${(contador + '.').green.red }  ${desc} => ${estadoActual}`);
+                }
+            }
+           
+        })
     }
 }
 

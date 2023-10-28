@@ -33,6 +33,14 @@ const main = async() =>{
                 // console.log(tareas.listadoArr);
                 tareas.ListadoCompleto();
             break;
+
+            case '3':
+                tareas.mostrarEstadoComplePend(true);
+            break;
+
+            case '4':
+                tareas.mostrarEstadoComplePend(false);
+            break;
     
         }
 
