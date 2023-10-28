@@ -9,31 +9,31 @@ const menuOptions = [
         choices: [
             {
                 value: '1',
-                name: '1. Crear Tarea',
+                name: `${'1.'.green} Crear Tarea`,
             },
             {
                 value: '2',
-                name: '2. Lista de tareas',
+                name: `${'2.'.green} Lista de tareas`,
             },
             {
                 value: '3',
-                name: '3. Lista de tareas completadas',
+                name: `${'3.'.green} Lista de tareas completadas`,
             },
             {
                 value: '4',
-                name: '4. Lista de tareas pendientes',
+                name: `${'4.'.green} Lista de tareas pendientes`,
             },
             {
                 value: '5',
-                name: '5. Completar tarea',
+                name: `${'5.'.green} Completar tarea`,
             },
             {
                 value: '6',
-                name: '6. Eliminar tarea',
+                name: `${'6.'.green} Completar tarea`,
             },
             {
                 value: '0',
-                name: '0. salir',
+                name: `${'0.'.green} salir`,
             },
         ]
     }
@@ -44,7 +44,7 @@ const inquirerMenu = async() => {
 
     // console.clear();
     console.log('==========================='.green);
-    console.log('   Seleccione una Opcion '.green);
+    console.log('   Seleccione una Opcion ');
     console.log('===========================\n'.green);
 
     const {opcion} = await inquirer.prompt(menuOptions)
@@ -67,6 +67,7 @@ const pausa = async() =>{
     console.clear();
 }
 
+// leee el input de la primera opcion
 const leerInput  = async(message) => {
 
     const questionInitial = [
@@ -84,7 +85,6 @@ const leerInput  = async(message) => {
     ];
 
     // Desestructurar para poder ver lla descr que es lo que necesitamos
-
     const {desc} = await inquirer.prompt(questionInitial);
     return desc;
 }
