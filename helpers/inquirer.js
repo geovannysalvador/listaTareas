@@ -67,4 +67,26 @@ const pausa = async() =>{
     console.clear();
 }
 
-module.exports = {inquirerMenu, pausa};
+const leerInput  = async(message) => {
+
+    const questionInitial = [
+        {
+            type: 'input',
+            name: 'desc',
+            message, 
+            validate(value){
+                if( value.length === 0 ){
+                    return 'Ingrese una tarea';
+                }
+                return true;
+            }
+        }
+    ];
+
+    // Desestructurar para poder ver lla descr que es lo que necesitamos
+
+    const {desc} = await inquirer.prompt(questionInitial);
+    return desc;
+}
+
+module.exports = {inquirerMenu, pausa, leerInput};
