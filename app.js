@@ -1,7 +1,7 @@
 require('colors')
 
 const { guardarDB, leerDB } = require('./helpers/guardarArchivo.js');
-const {inquirerMenu, pausa, leerInput, listaTareasBorrar, confirmar} = require('./helpers/inquirer.js');
+const {inquirerMenu, pausa, leerInput, listaTareasBorrar, confirmar, mostrarListadoCheckList} = require('./helpers/inquirer.js');
 const Tarea = require('./models/tarea.js');
 const Tareas = require('./models/tareas.js');
 
@@ -41,20 +41,22 @@ const main = async() =>{
             case '4':
                 tareas.mostrarEstadoComplePend(false);
             break;
+            // Completado o pendiente
             case '5':
-                // tareas.mostrarEstadoComplePend(false);
+                const ids = await mostrarListadoCheckList(tareas.listadoArr);
+                tareas.toggleCompletadas(ids);
             break;
+            // Borrar
             case '6':
                 const id = await listaTareasBorrar( tareas.listadoArr );
-                const ok = await confirmar("Esta seguro ?");
-                if(ok){
-                    tareas.borrarTarea(id);
-                    console.log('Tarea eliminada correctamente');
+                if( id !== '0' ){
+                    const ok = await confirmar("Esta seguro ?");
+                    if(ok){
+                        tareas.borrarTarea(id);
+                        console.log('Tarea eliminada correctamente');
+                    }
                 }
-                console.log("No se elimino la tarea");
-            break;
-            case '7':
-                // tareas.mostrarEstadoComplePend(false);
+                
             break;
     
         }
